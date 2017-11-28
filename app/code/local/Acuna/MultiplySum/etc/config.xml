@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--
+	/**
+	* Multiplies order sum by decimal factor
+	*
+	* @author     Rodrigo Acuña
+    * @license    Open Software License (OSL 3.0)
+	*/
+-->
+<config>
+	<modules>
+		<Acuna_MultiplySum>
+			<version>0.1.0</version>
+		</Acuna_MultiplySum>
+	</modules>
+	<global>
+		<helpers>
+			<multiplysum>
+                <class>Acuna_MultiplySum_Helper</class>
+            </multiplysum>
+		</helpers>
+		<models>
+            <multiplysum>
+                <class>Acuna_MultiplySum_Model</class>
+				<resourceModel>multiplysum_resource</resourceModel>
+            </multiplysum>
+            <multiplysum_resource>
+                <class>Acuna_MultiplySum_Model_Resource</class>
+                <entities>
+                    <order>
+                        <table>multiplysum_order</table>
+                    </order>
+                </entities>
+            </multiplysum_resource>
+		</models>
+		<resources>
+			<multiplysum_setup>
+                <setup>
+                    <module>Acuna_MultiplySum</module>
+                </setup>
+			</multiplysum_setup>
+            <multiplysum_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </multiplysum_read>
+            <multiplysum_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </multiplysum_write>
+		</resources>
+		<events>
+			<sales_order_invoice_save_after>
+                <observers>
+                    <multiply_order_sum>
+                        <type>singleton</type>
+                        <class>multiplysum/observer</class>
+                        <method>saveInvoiceData</method>
+                    </multiply_order_sum>
+                </observers>
+			</sales_order_invoice_save_after>
+		</events>
+	</global>
+	<adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<multiplysum module="multiplysum">
+											<title>Multiply Sum Settings</title>
+										</multiplysum>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+	<default>
+		<multiplysum>
+            <general>
+                <enabled>0</enabled>
+                <decimal_factor>0.5</decimal_factor>
+            </general>
+		</multiplysum>
+	</default>
+</config>

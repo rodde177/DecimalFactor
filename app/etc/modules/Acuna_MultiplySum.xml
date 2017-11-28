@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Acuna_MultiplySum>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Sales />
+            </depends>
+        </Acuna_MultiplySum>
+    </modules>
+</config>

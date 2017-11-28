@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config>
+  <tabs>
+    <acuna module="multiplysum" translate="label">
+      <label>Acuna Extensions</label>
+      <sort_order>800</sort_order>
+    </acuna>
+  </tabs>
+  <sections>
+    <multiplysum module="multiplysum" translate="label">
+      <class>separator-top</class>
+      <label>Multiply by Decimal Factor</label>
+      <tab>acuna</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>10</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <general module="multiplysum" translate="label">
+          <label>General Settings</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>10</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <enabled translate="label comment">
+              <label>Module enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>10</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <comment><![CDATA[If order data should be saved.]]></comment>
+            </enabled>
+            <decimal_factor translate="label">
+              <label>Amount by which order sum will be multiplied</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>0</show_in_website>
+              <show_in_store>0</show_in_store>
+              <validate>validate-greater-than-zero</validate>
+            </decimal_factor>
+          </fields>
+        </general>
+      </groups>
+    </multiplysum>
+  </sections>
+</config>
